@@ -32,3 +32,9 @@ video{
     background-position: center;
     padding: 25px;
 }
+canvas{
+    border: 3px solid lightseagreen;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px teal;
+    margin-top: 20px;
+}

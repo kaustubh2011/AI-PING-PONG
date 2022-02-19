@@ -20,7 +20,15 @@ var ball = {
     dx:3,
     dy:3
 }
-
+rightwristx=0;
+rightwristy=0;
+scorerightwrist=0;
+gamestatus=""; 
+function preload()
+{
+  ball_touch_paddle=loadSound("ball_touch_paddel.wav");
+  missed=loadSound("missed.wav");
+}
 function setup(){
   var canvas =  createCanvas(700,400);
   canvas.parent('canvas');
@@ -43,10 +51,15 @@ function gotposes(results)
 		nosey=results[0].pose.nose.y;
 	}
 }
+function start()
+{
+  gamestatus="start";
+  document.getElementById("status").innerHTML="Game is loaded";
+}
 function draw(){
 
  background(0); 
-
+image(video,0,0,700,400);
  fill("black");
  stroke("black");
  rect(680,0,20,700);
