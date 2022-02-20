@@ -47,8 +47,9 @@ function gotposes(results)
 	if(results.length>0)
 	{
 		console.log(results);
-		nosex=results[0].pose.nose.x;
-		nosey=results[0].pose.nose.y;
+		rightwristx=results[0].pose.rightWrist.x;
+		rightwristy=results[0].pose.rightWrist.y;
+    scorerightwrist=results[0].pose.keypoints[10].score;
 	}
 }
 function start()
@@ -67,6 +68,12 @@ image(video,0,0,700,400);
  fill("black");
  stroke("black");
  rect(0,0,20,700);
+ if(scorerightwrist>0.2)
+ {
+   fill("red");
+   stroke("red");
+   circle(rightwristx,rightwristy,30);
+ }
  
    //funtion paddleInCanvas call 
    paddleInCanvas();
@@ -75,7 +82,7 @@ image(video,0,0,700,400);
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
+   paddle1Y = rightwristy; 
    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
    
@@ -191,4 +198,10 @@ function paddleInCanvas(){
   if(mouseY < 0){
     mouseY =0;
   }  
+}
+function restart()
+{
+  loop();
+pcscore=0;
+playerscore=0;
 }
